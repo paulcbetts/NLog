@@ -31,7 +31,7 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
-#if !SILVERLIGHT2 && !SILVERLIGHT3 && !WINDOWS_PHONE
+#if !SILVERLIGHT2 && !SILVERLIGHT && !NETFX_CORE3 && !WINDOWS_PHONE
 
 namespace NLog.Targets
 {
@@ -161,7 +161,7 @@ namespace NLog.Targets
         [DefaultValue(true)]
         public bool EnableFileDelete { get; set; }
 
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
         /// <summary>
         /// Gets or sets the file attributes (Windows only).
         /// </summary>

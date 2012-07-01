@@ -47,7 +47,7 @@ namespace NLog
     {
         private static readonly LogFactory globalFactory = new LogFactory();
 
-#if !NET_CF && !SILVERLIGHT && !MONO
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE && !MONO
         /// <summary>
         /// Initializes static members of the LogManager class.
         /// </summary>
@@ -86,7 +86,7 @@ namespace NLog
             remove { globalFactory.ConfigurationChanged -= value; }
         }
 
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
         /// <summary>
         /// Occurs when logging <see cref="Configuration" /> gets reloaded.
         /// </summary>
@@ -290,7 +290,7 @@ public static void Flush(AsyncContinuation asyncContinuation, int timeoutMillise
             return globalFactory.IsLoggingEnabled();
         }
 
-#if !NET_CF && !SILVERLIGHT && !MONO
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE && !MONO
         private static void SetupTerminationEvents()
         {
             AppDomain.CurrentDomain.ProcessExit += TurnOffLogging;

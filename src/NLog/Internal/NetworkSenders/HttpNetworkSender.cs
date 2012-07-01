@@ -31,6 +31,8 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
+#if !NETFX_CORE
+
 namespace NLog.Internal.NetworkSenders
 {
     using System;
@@ -114,3 +116,5 @@ namespace NLog.Internal.NetworkSenders
         }
     }
 }
+
+#endif

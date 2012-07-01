@@ -37,6 +37,12 @@ namespace NLog.Internal
     using System.Threading;
     using NLog.Common;
 
+#if NETFX_CORE
+    using Windows.System.Threading;
+
+
+#endif
+
     /// <summary>
     /// Wraps <see cref="AsyncContinuation"/> with a timeout.
     /// </summary>

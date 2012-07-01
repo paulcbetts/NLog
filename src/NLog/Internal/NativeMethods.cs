@@ -49,12 +49,20 @@ namespace NLog.Internal
         internal static extern bool LogonUser(string pszUsername, string pszDomain, string pszPassword, int dwLogonType, int dwLogonProvider, out IntPtr phToken);
 
         // closes open handes returned by LogonUser
+#if NETFX_CORE
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+#else
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+#endif
         [return: MarshalAs(UnmanagedType.Bool)]
         internal static extern bool CloseHandle(IntPtr handle);
 
         // creates duplicate token handle
+#if NETFX_CORE
+        [DllImport("advapi32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+#else
         [DllImport("advapi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+#endif
         [return: MarshalAs(UnmanagedType.Bool)]
         internal static extern bool DuplicateToken(IntPtr existingTokenHandle, int impersonationLevel, out IntPtr duplicateTokenHandle);
 
@@ -94,7 +102,7 @@ namespace NLog.Internal
 #endif
         internal static extern uint GetModuleFileName([In] IntPtr hModule, [Out] StringBuilder lpFilename, [In] [MarshalAs(UnmanagedType.U4)] int nSize);
 
-#if !NET_CF
+#if !NET_CF && !NETFX_CORE
         [DllImport("ole32.dll")]
         internal static extern int CoGetObjectContext(ref Guid iid, out AspHelper.IObjectContext g);
 #endif

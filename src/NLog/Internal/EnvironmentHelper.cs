@@ -55,7 +55,7 @@ namespace NLog.Internal
             }
         }
 
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
         internal static string GetSafeEnvironmentVariable(string name)
         {
             try

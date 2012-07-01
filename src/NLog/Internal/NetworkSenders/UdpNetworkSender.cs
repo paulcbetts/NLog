@@ -31,7 +31,7 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
-#if !SILVERLIGHT || (WINDOWS_PHONE && !WINDOWS_PHONE_7)
+#if (!SILVERLIGHT || (WINDOWS_PHONE && !WINDOWS_PHONE_7)) && !NETFX_CORE
 
 namespace NLog.Internal.NetworkSenders
 {

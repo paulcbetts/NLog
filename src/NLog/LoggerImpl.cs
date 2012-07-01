@@ -62,7 +62,7 @@ namespace NLog
                 return;
             }
 
-#if !NET_CF
+#if !NET_CF && !NETFX_CORE
             StackTraceUsage stu = targets.GetStackTraceUsage();
 
             if (stu != StackTraceUsage.None && !logEvent.HasStackTrace)
@@ -101,7 +101,7 @@ namespace NLog
             }
         }
 
-#if !NET_CF
+#if !NET_CF && !NETFX_CORE
         private static int FindCallingMethodOnStackTrace(StackTrace stackTrace, Type loggerType)
         {
             int firstUserFrame = 0;

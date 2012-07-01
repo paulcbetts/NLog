@@ -33,7 +33,7 @@
 
 #define TRACE
 
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
 
 namespace NLog.Targets
 {

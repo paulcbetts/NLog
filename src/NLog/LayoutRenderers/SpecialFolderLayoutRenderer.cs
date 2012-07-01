@@ -31,7 +31,7 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
-#if !NET_CF
+#if !NET_CF && !NETFX_CORE
 
 namespace NLog.LayoutRenderers
 {

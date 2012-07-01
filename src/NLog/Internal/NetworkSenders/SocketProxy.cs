@@ -31,7 +31,7 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
-#if !WINDOWS_PHONE_7
+#if !WINDOWS_PHONE_7 && !NETFX_CORE
 
 namespace NLog.Internal.NetworkSenders
 {

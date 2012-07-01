@@ -40,6 +40,7 @@ namespace NLog.Internal
 #elif SILVERLIGHT
     using System.Windows;
     using System.Windows.Browser;
+#elif NETFX_CORE
 #else
     using System.Windows.Forms;
 #endif
@@ -70,6 +71,8 @@ namespace NLog.Internal
             {
                 action();
             }
+#elif NETFX_CORE
+            // XXX: Messageboxes don't exist in Metro
 #else
             MessageBox.Show(message, caption);
 #endif

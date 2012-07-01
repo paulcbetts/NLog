@@ -107,7 +107,7 @@ namespace NLog.Config
             this.Initialize(reader, fileName, ignoreErrors);
         }
 
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !NETFX_CORE
         /// <summary>
         /// Initializes a new instance of the <see cref="XmlLoggingConfiguration" /> class.
         /// </summary>
@@ -140,7 +140,7 @@ namespace NLog.Config
         }
 #endif
 
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
         /// <summary>
         /// Gets the default <see cref="LoggingConfiguration" /> object by parsing 
         /// the application configuration file (<c>app.exe.config</c>).

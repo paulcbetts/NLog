@@ -31,7 +31,7 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
-#if !WCF_SUPPORTED
+#if !WCF_SUPPORTED && !NETFX_CORE
 
 namespace NLog.LogReceiverService
 {

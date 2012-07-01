@@ -31,6 +31,8 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
+#if !NETFX_CORE
+
 namespace NLog.Targets
 {
     using System;
@@ -190,3 +192,5 @@ namespace NLog.Targets
         }
     }
 }
+
+#endif

@@ -52,7 +52,7 @@ namespace NLog.Internal.FileAppenders
 
         int BufferSize { get; }
 
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
         Win32FileAttributes FileAttributes { get; }
 #endif
     }

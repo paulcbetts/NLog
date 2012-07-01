@@ -136,7 +136,7 @@ namespace NLog
         /// </summary>
         public LogLevel Level { get; set; }
 
-#if !NET_CF
+#if !NET_CF && !NETFX_CORE
         /// <summary>
         /// Gets a value indicating whether stack trace has been set for this event.
         /// </summary>
@@ -339,7 +339,7 @@ namespace NLog
             return "Log Event: Logger='" + this.LoggerName + "' Level=" + this.Level + " Message='" + this.FormattedMessage + "' SequenceID=" + this.SequenceID;
         }
 
-#if !NET_CF
+#if !NET_CF && !NETFX_CORE
         /// <summary>
         /// Sets the stack trace for the event info.
         /// </summary>

@@ -107,7 +107,7 @@ namespace NLog.LogReceiverService
         /// </summary>
         public event EventHandler<AsyncCompletedEventArgs> CloseCompleted;
 
-#if SILVERLIGHT && !SILVERLIGHT2
+#if SILVERLIGHT && !SILVERLIGHT && !NETFX_CORE2
         /// <summary>
         /// Gets or sets the cookie container.
         /// </summary>

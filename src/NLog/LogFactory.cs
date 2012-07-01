@@ -53,7 +53,7 @@ namespace NLog
     /// </summary>
     public class LogFactory : IDisposable
     {
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
         private readonly MultiFileWatcher watcher;
         private const int ReconfigAfterFileChangedTimeout = 1000;
 #endif
@@ -62,7 +62,7 @@ namespace NLog
 
         private static TimeSpan defaultFlushTimeout = TimeSpan.FromSeconds(15);
 
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
         private Timer reloadTimer;
 #endif
 
@@ -76,7 +76,7 @@ namespace NLog
         /// </summary>
         public LogFactory()
         {
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
             this.watcher = new MultiFileWatcher();
             this.watcher.OnChange += this.ConfigFileChanged;
 #endif
@@ -97,7 +97,7 @@ namespace NLog
         /// </summary>
         public event EventHandler<LoggingConfigurationChangedEventArgs> ConfigurationChanged;
 
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
         /// <summary>
         /// Occurs when logging <see cref="Configuration" /> gets reloaded.
         /// </summary>
@@ -129,7 +129,7 @@ namespace NLog
 
                     this.configLoaded = true;
 
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
                     if (this.config == null)
                     {
                         // try to load default configuration
@@ -160,7 +160,7 @@ namespace NLog
                         }
                     }
 
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
                     if (this.config != null)
                     {
                         Dump(this.config);
@@ -178,7 +178,7 @@ namespace NLog
 
             set
             {
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
                 try
                 {
                     this.watcher.StopWatching();
@@ -215,7 +215,7 @@ namespace NLog
 
                         this.config.InitializeAll();
                         this.ReconfigExistingLoggers(this.config);
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
                         try
                         {
                             this.watcher.Watch(this.config.FileNamesToWatch);
@@ -469,7 +469,7 @@ namespace NLog
             return this.logsEnabled >= 0;
         }
 
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
         internal void ReloadConfigOnTimer(object state)
         {
             LoggingConfiguration configurationToReload = (LoggingConfiguration)state;
@@ -629,7 +629,7 @@ namespace NLog
         {
             if (disposing)
             {
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
                 this.watcher.Dispose();
 
                 if (this.reloadTimer != null)
@@ -719,7 +719,7 @@ namespace NLog
             }
         }
 
-#if !NET_CF && !SILVERLIGHT
+#if !NET_CF && !SILVERLIGHT && !NETFX_CORE
         private void ConfigFileChanged(object sender, EventArgs args)
         {
             InternalLogger.Info("Configuration file change detected! Reloading in {0}ms...", ReconfigAfterFileChangedTimeout);
